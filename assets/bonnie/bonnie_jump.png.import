@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2j1w6jnbulcm"
-path="res://.godot/imported/idle_2_seperated.png-444cc7d006f347a9825a751b5424be84.ctex"
+uid="uid://dhpsensmxsueg"
+path="res://.godot/imported/bonnie_jump.png-570cba84e92d9325a9be2b3c5a031b92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/idle_2_seperated.png"
-dest_files=["res://.godot/imported/idle_2_seperated.png-444cc7d006f347a9825a751b5424be84.ctex"]
+source_file="res://assets/bonnie/bonnie_jump.png"
+dest_files=["res://.godot/imported/bonnie_jump.png-570cba84e92d9325a9be2b3c5a031b92.ctex"]
 
 [params]
 
