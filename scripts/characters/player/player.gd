@@ -25,9 +25,12 @@ func _physics_process(delta: float) -> void:
 
 func process_animations() -> void:
 	if not is_on_floor():
-		if current_animation() != animations.fall and current_animation() != animations.jump:
+		if climbing:
+			play_animation(animations.climb)
+		elif current_animation() != animations.fall and current_animation() != animations.jump:
 			play_animation(animations.fall)
 
+		_reset_idle_timer()
 		return
 
 	if abs(direction.x) > 0.0:

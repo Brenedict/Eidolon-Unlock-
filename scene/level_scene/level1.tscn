@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=69 format=3 uid="uid://rwjc6vbbj4ia"]
 
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
@@ -23,7 +23,7 @@ size = Vector2(134, 157)
 size = Vector2(239, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8kj3"]
-size = Vector2(111.5, 200)
+size = Vector2(110.5, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crycw"]
 size = Vector2(226, 48)
@@ -160,10 +160,10 @@ size = Vector2(22, 22.847656)
 size = Vector2(230.20313, 161.78125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1rmk"]
-size = Vector2(6.5, 28)
+size = Vector2(6.5, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdet0"]
-size = Vector2(7, 71)
+size = Vector2(9, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw1ra"]
 size = Vector2(7, 25.5)
@@ -176,6 +176,27 @@ size = Vector2(8, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l5cw"]
 size = Vector2(8, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_541h4"]
+size = Vector2(6.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3d3u"]
+size = Vector2(10, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldfgt"]
+size = Vector2(7.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0frn7"]
+size = Vector2(7.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndvtf"]
+size = Vector2(7.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kk0l2"]
+size = Vector2(7.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d811u"]
+size = Vector2(7.5, 1)
 
 [node name="Lv1" type="Node2D"]
 
@@ -247,7 +268,7 @@ position = Vector2(-61.5, 36)
 shape = SubResource("RectangleShape2D_jwv3a")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="part1_collision"]
-position = Vector2(296.25, 26)
+position = Vector2(295.75, 26)
 shape = SubResource("RectangleShape2D_v8kj3")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="part1_collision"]
@@ -477,9 +498,12 @@ shape = SubResource("RectangleShape2D_5le63")
 [node name="Ladders" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 128
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladders"]
-position = Vector2(237.75, -44)
+position = Vector2(237.75, -43.5)
 shape = SubResource("RectangleShape2D_p1rmk")
 debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
 
@@ -513,8 +537,60 @@ position = Vector2(3078, 45.5)
 shape = SubResource("RectangleShape2D_2l5cw")
 debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
 
+[node name="LadderPlatforms" type="StaticBody2D" parent="."]
+position = Vector2(237.75, -57.5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderPlatforms"]
+shape = SubResource("RectangleShape2D_541h4")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(117.25, -12)
+shape = SubResource("RectangleShape2D_e3d3u")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(333, 24.5)
+shape = SubResource("RectangleShape2D_ldfgt")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(1012.25, -16.5)
+shape = SubResource("RectangleShape2D_0frn7")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(1012.25, -16.5)
+shape = SubResource("RectangleShape2D_0frn7")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(1450.25, -55.5)
+shape = SubResource("RectangleShape2D_ndvtf")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(2362.25, 49.5)
+shape = SubResource("RectangleShape2D_kk0l2")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="LadderPlatforms"]
+position = Vector2(2840.25, 64.5)
+shape = SubResource("RectangleShape2D_d811u")
+one_way_collision = true
+debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
+
 [node name="Bonnie" parent="." instance=ExtResource("7_pdet0")]
-position = Vector2(-682, -146)
+position = Vector2(324, -109)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
 remote_path = NodePath("../../Camera2D")
@@ -525,7 +601,7 @@ player = NodePath("../Bonnie")
 actions = ExtResource("9_1k30x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-682, -146)
+position = Vector2(324, -109)
 zoom = Vector2(3, 3)
 
 [connection signal="body_entered" from="Ladders" to="Bonnie" method="_on_ladders_body_entered"]

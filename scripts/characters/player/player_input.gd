@@ -12,3 +12,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed(actions.jump):
 		player.try_jump()
+	
+	if Input.is_action_just_pressed(actions.down):
+		player.position.y += 1

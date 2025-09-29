@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhrbhmyytx8en"]
+[gd_scene load_steps=8 format=3 uid="uid://bhrbhmyytx8en"]
 
 [ext_resource type="Texture2D" uid="uid://lhpykr1wvm5h" path="res://assets/background/forest/12.png" id="1_ltoog"]
 [ext_resource type="Texture2D" uid="uid://5rdb5bjtubg8" path="res://assets/background/forest/10.png" id="2_lndie"]
 [ext_resource type="Texture2D" uid="uid://b0rv8o6cnmf0h" path="res://assets/background/forest/9.png" id="3_apbps"]
 [ext_resource type="Texture2D" uid="uid://b1jmsxao38m8e" path="res://assets/background/forest/8.png" id="4_ua2w4"]
 [ext_resource type="Texture2D" uid="uid://b8ntjcyqlptin" path="res://assets/background/forest/6.png" id="5_v8uqd"]
-[ext_resource type="PackedScene" uid="uid://cw5hog6v20dj1" path="res://test_files/Bonnie.tscn" id="6_stu00"]
 [ext_resource type="Texture2D" uid="uid://ev2p01y8nf7e" path="res://assets/background/forest/7.png" id="7_8wb4h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r40rm"]
@@ -74,15 +73,6 @@ motion_mirroring = Vector2(375, 0)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_v8uqd")
 centered = false
-
-[node name="Bonnie" parent="." instance=ExtResource("6_stu00")]
-z_index = 1
-position = Vector2(-4, -23)
-
-[node name="Camera2D" type="Camera2D" parent="Bonnie"]
-position = Vector2(15, 72)
-offset = Vector2(0, -100)
-zoom = Vector2(2.5, 2.5)
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 layer = 1
