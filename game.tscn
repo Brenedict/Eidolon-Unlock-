@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3fw7bbmc0dq"]
+[gd_scene load_steps=5 format=3 uid="uid://cn3fw7bbmc0dq"]
 
-[ext_resource type="PackedScene" uid="uid://cw5hog6v20dj1" path="res://test_files/Bonnie.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://dhs7ywww57jms" path="res://scripts/characters/player/player_input.gd" id="3_fc0e3"]
+[ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="4_7jktm"]
 [ext_resource type="PackedScene" uid="uid://rwjc6vbbj4ia" path="res://scene/level_scene/level1.tscn" id="6_ryrav"]
 
 [node name="Game" type="Node2D"]
@@ -8,10 +10,17 @@
 [node name="Lv1" parent="." instance=ExtResource("6_ryrav")]
 
 [node name="Bonnie" parent="." instance=ExtResource("2_e2o6t")]
-z_index = 1
-position = Vector2(-647, -152)
+position = Vector2(-588, -170)
 
-[node name="Camera2D" type="Camera2D" parent="Bonnie"]
-position = Vector2(15, 72)
-offset = Vector2(0, -100)
-zoom = Vector2(2.5, 2.5)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_fc0e3")
+player = NodePath("../Bonnie")
+actions = ExtResource("4_7jktm")
+metadata/_custom_type_script = "uid://dhs7ywww57jms"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-588, -170)
+zoom = Vector2(3, 3)
