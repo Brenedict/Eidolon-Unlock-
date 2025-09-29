@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerInputActions" load_steps=2 format=3 uid="uid://d2c63rwnti8m7"]
+
+[ext_resource type="Script" uid="uid://c406fvs1sj0ns" path="res://scripts/characters/player/player_input_actions.gd" id="1_de1oy"]
+
+[resource]
+script = ExtResource("1_de1oy")
+metadata/_custom_type_script = "uid://c406fvs1sj0ns"
