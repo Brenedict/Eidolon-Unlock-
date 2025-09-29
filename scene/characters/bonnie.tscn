@@ -28,7 +28,7 @@ texture_filter = 1
 position = Vector2(0, -2)
 scale = Vector2(0.5104166, 0.5104166)
 sprite_frames = ExtResource("4_2aw2h")
-animation = &"climb"
+animation = &"interact"
 
 [node name="RayCast2D" type="RayCast2D" parent="Facing"]
 rotation = 3.1415927

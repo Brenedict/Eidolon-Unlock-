@@ -3,6 +3,7 @@ extends PlatformerCharacter2D
 
 @export var idle_timer : Timer
 @export var raycast : RayCast2D
+@export var camera : Camera2D
 @export_range(0, 500, 0.2, "or_greater") var walk_speed : float = 100.0
 @export_range(0, 500, 0.2, "or_greater") var run_speed : float = 200.0
 @export_range(0, 500, 0.2, "or_greater") var jump_force : float = 300.0
@@ -10,11 +11,24 @@ extends PlatformerCharacter2D
 var run : bool = false
 var climbing : bool = false
 var interact : bool = false
+var zipline : bool = false
 
 func _ready():
+	_get_remote_transform().remote_path = camera.get_path()
 	animated_sprite.play(animations.idle_2)
 
+func _get_remote_transform() -> RemoteTransform2D:
+	for child in get_children():
+		if child is RemoteTransform2D:
+			return child
+	
+	return null
+
+
 func _physics_process(delta: float) -> void:
+	if _try_zipline(delta):
+		return
+
 	var move_speed = run_speed if _can_run() else walk_speed
 	velocity.x = direction.x * move_speed
 
@@ -27,20 +41,54 @@ func _physics_process(delta: float) -> void:
 	_process_pushable_objects(move_speed)
 	_process_animations()
 
+func _try_zipline(delta: float) -> bool:
+	if not zipline:
+		return false
+
+	var parent = get_parent()
+	if not parent is PathFollow2D:
+		return false
+
+	if parent.progress_ratio < 1.0:
+		return _advance_on_zipline(parent, delta)
+
+	_detach_from_zipline()
+	return false
+
+
+func _advance_on_zipline(parent: PathFollow2D, delta: float) -> bool:
+	play_animation(animations.climb)
+	parent.progress_ratio += 0.2 * delta
+	return true
+
+
+func _detach_from_zipline() -> void:
+	zipline = false
+	reparent(get_tree().root.get_child(0))
+	_get_remote_transform().remote_path = camera.get_path()
+	global_rotation = 0
+
 func _process_pushable_objects(move_speed : float) -> void:
 	var object = raycast.get_collider()
 
-	if object and interact:
+	if not object:
+		interact = false
+
+	if interact:
+		play_animation(animations.interact)
 		var push_force = move_speed * direction.x
 		var pull_force = push_force * 1.25
 
 		# Direction Vector
-		var object_direction_sign = sign(object.position.x - position.x)
+		var object_direction_sign = sign(object.global_position.x - global_position.x)
 		var movement_direction_sign = sign(direction.x)
 		print(object_direction_sign == movement_direction_sign)
 		object.linear_velocity.x =  push_force if object_direction_sign == movement_direction_sign else pull_force
 
 func _process_animations() -> void:
+	if interact:
+		return
+
 	if not is_on_floor():
 		if climbing:
 			play_animation(animations.climb)
@@ -95,9 +143,3 @@ func _jump() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if current_animation() == animations.jump:
 		play_animation(animations.fall)
-
-func _on_ladders_body_entered(_body: Node2D) -> void:
-	climbing = true
-
-func _on_ladders_body_exited(_body: Node2D) -> void:
-	climbing = false

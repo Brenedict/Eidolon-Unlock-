@@ -1,5 +1,6 @@
-[gd_scene load_steps=70 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=81 format=3 uid="uid://rwjc6vbbj4ia"]
 
+[ext_resource type="Script" uid="uid://bibq5lhnftp18" path="res://scripts/level_scene.gd" id="1_1k30x"]
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
@@ -199,7 +200,42 @@ size = Vector2(7.5, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d811u"]
 size = Vector2(7.5, 1)
 
-[node name="Lv1" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_jw1ra"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 3062, -59, 0, 0, 0, 0, 3080, -52, 0, 0, 0, 0, 3100, -44, 0, 0, 0, 0, 3121, -39, 0, 0, 0, 0, 3156, -30, 0, 0, 0, 0, 3199, -21, 0, 0, 0, 0, 3225, -15, 0, 0, 0, 0, 3295, -4, 0, 0, 0, 0, 3398, 11, 0, 0, 0, 0, 3465, 21, 0, 0, 0, 0, 3566, 33, 0, 0, 0, 0, 3639, 41, 0, 0, 0, 0, 3703, 48, 0, 0, 0, 0, 3760, 55, 0, 0, 0, 0, 3801, 58, 0, 0, 0, 0, 3829, 61, 0, 0, 0, 0, 3829, 61, 0, 0, 0, 0, 3853, 63, 0, 0, 0, 0, 3876, 66, 0, 0, 0, 0, 3888, 66, 0, 0, 0, 0, 3892, 67)
+}
+point_count = 21
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1k30x"]
+b = Vector2(30, 12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jw1ra"]
+b = Vector2(60, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pkafg"]
+b = Vector2(90, 19)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2l5cw"]
+b = Vector2(103, 17)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_541h4"]
+b = Vector2(109, 16)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e3d3u"]
+b = Vector2(115, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ldfgt"]
+b = Vector2(124, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ndvtf"]
+b = Vector2(128, 13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0frn7"]
+b = Vector2(78, 8)
+
+[node name="Lv1" type="Node2D" node_paths=PackedStringArray("zipline")]
+script = ExtResource("1_1k30x")
+zipline = NodePath("Zipline")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -590,19 +626,13 @@ shape = SubResource("RectangleShape2D_d811u")
 one_way_collision = true
 debug_color = Color(0.8836266, 0.28106165, 0.486835, 0.41960785)
 
-[node name="Bonnie" parent="." instance=ExtResource("7_pdet0")]
-position = Vector2(324, -109)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
-remote_path = NodePath("../../Camera2D")
-
 [node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("8_jw1ra")
-player = NodePath("../Bonnie")
+player = NodePath("../Zipline/ZiplinePoint/Bonnie")
 actions = ExtResource("9_1k30x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(324, -109)
+position = Vector2(-684, -145.00012)
 zoom = Vector2(3, 3)
 
 [node name="PushableBox" parent="." instance=ExtResource("10_jw1ra")]
@@ -620,5 +650,72 @@ position = Vector2(2126, -10)
 [node name="PushableBox5" parent="." instance=ExtResource("10_jw1ra")]
 position = Vector2(2936, 150)
 
-[connection signal="body_entered" from="Ladders" to="Bonnie" method="_on_ladders_body_entered"]
-[connection signal="body_exited" from="Ladders" to="Bonnie" method="_on_ladders_body_exited"]
+[node name="Zipline" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jw1ra")
+
+[node name="ZiplinePoint" type="PathFollow2D" parent="Zipline"]
+position = Vector2(3062, -59)
+rotation = 0.3708913
+loop = false
+
+[node name="Bonnie" parent="Zipline/ZiplinePoint" node_paths=PackedStringArray("camera") instance=ExtResource("7_pdet0")]
+position = Vector2(-3522.4597, 1277.5712)
+rotation = -0.3708913
+camera = NodePath("../../../Camera2D")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Zipline/ZiplinePoint/Bonnie"]
+remote_path = NodePath("../../../../Camera2D")
+
+[node name="ZiplineArea" type="Area2D" parent="Zipline"]
+position = Vector2(3063, -60)
+collision_layer = 8
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(-1, 1)
+shape = SubResource("SegmentShape2D_1k30x")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(29, 13)
+shape = SubResource("SegmentShape2D_jw1ra")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(90, 29)
+shape = SubResource("SegmentShape2D_pkafg")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(180, 48)
+shape = SubResource("SegmentShape2D_2l5cw")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(282, 64)
+shape = SubResource("SegmentShape2D_541h4")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(390, 80)
+shape = SubResource("SegmentShape2D_e3d3u")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(504, 94)
+shape = SubResource("SegmentShape2D_ldfgt")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(625, 107)
+shape = SubResource("SegmentShape2D_ndvtf")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Zipline/ZiplineArea"]
+position = Vector2(750, 119)
+shape = SubResource("SegmentShape2D_0frn7")
+debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
+
+[connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="Ladders" to="." method="_on_ladders_body_exited"]
+[connection signal="body_entered" from="Zipline/ZiplineArea" to="." method="_on_zipline_area_body_entered"]

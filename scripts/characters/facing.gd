@@ -11,7 +11,7 @@ extends Node2D
 			character.direction_changed.connect(_on_direction_changed)
 
 func _on_direction_changed(p_direction : Vector2):
-	if p_direction.x == 0 or (character is Player and character.interact):
+	if p_direction.x == 0 or (character is Player and (character.interact or character.zipline)):
 		return
 
 	scale.x = abs(scale.x) * sign(p_direction.x)

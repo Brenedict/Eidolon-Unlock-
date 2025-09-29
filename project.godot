@@ -66,6 +66,7 @@ interact={
 2d_physics/layer_1="Platform"
 2d_physics/layer_2="Ladder"
 2d_physics/layer_3="Pushable"
+2d_physics/layer_4="Zipline"
 2d_physics/layer_8="Player"
 
 [rendering]
