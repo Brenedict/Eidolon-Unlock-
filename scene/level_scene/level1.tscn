@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=70 format=3 uid="uid://rwjc6vbbj4ia"]
 
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_pdet0"]
 [ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
+[ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
 size = Vector2(181, 252)
@@ -145,7 +146,7 @@ size = Vector2(520.8125, 207.125)
 size = Vector2(30.601563, 14.78125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52iny"]
-size = Vector2(301.30078, 23.390625)
+size = Vector2(301.30078, 29.390625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxqqj"]
 size = Vector2(80.65039, 17.695313)
@@ -472,7 +473,7 @@ position = Vector2(-644.3008, 52.609375)
 shape = SubResource("RectangleShape2D_uuy0h")
 
 [node name="CollisionShape2D32" type="CollisionShape2D" parent="part2_collision"]
-position = Vector2(44.34961, 1.3046875)
+position = Vector2(44.34961, 4.3046875)
 shape = SubResource("RectangleShape2D_52iny")
 
 [node name="CollisionShape2D33" type="CollisionShape2D" parent="part2_collision"]
@@ -603,6 +604,21 @@ actions = ExtResource("9_1k30x")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(324, -109)
 zoom = Vector2(3, 3)
+
+[node name="PushableBox" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(401, 57)
+
+[node name="PushableBox2" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(969, -65)
+
+[node name="PushableBox3" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(1931, 55)
+
+[node name="PushableBox4" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(2126, -10)
+
+[node name="PushableBox5" parent="." instance=ExtResource("10_jw1ra")]
+position = Vector2(2936, 150)
 
 [connection signal="body_entered" from="Ladders" to="Bonnie" method="_on_ladders_body_entered"]
 [connection signal="body_exited" from="Ladders" to="Bonnie" method="_on_ladders_body_exited"]

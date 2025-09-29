@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cckds7drxy0dw"]
+
+[ext_resource type="Texture2D" uid="uid://bdfyhb84teprg" path="res://assets/platforms/pushable_box.png" id="1_3q05h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ghy"]
+size = Vector2(28, 28)
+
+[node name="PushableBox" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 133
+mass = 0.1
+lock_rotation = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.9802322e-07, 1.4305115e-06)
+scale = Vector2(0.054687493, 0.052336447)
+texture = ExtResource("1_3q05h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_47ghy")

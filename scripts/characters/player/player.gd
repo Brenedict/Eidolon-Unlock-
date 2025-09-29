@@ -2,17 +2,20 @@ class_name Player
 extends PlatformerCharacter2D
 
 @export var idle_timer : Timer
+@export var raycast : RayCast2D
 @export_range(0, 500, 0.2, "or_greater") var walk_speed : float = 100.0
 @export_range(0, 500, 0.2, "or_greater") var run_speed : float = 200.0
 @export_range(0, 500, 0.2, "or_greater") var jump_force : float = 300.0
+
 var run : bool = false
 var climbing : bool = false
+var interact : bool = false
 
 func _ready():
 	animated_sprite.play(animations.idle_2)
 
 func _physics_process(delta: float) -> void:
-	var move_speed = run_speed if run else walk_speed
+	var move_speed = run_speed if _can_run() else walk_speed
 	velocity.x = direction.x * move_speed
 
 	if not climbing:
@@ -21,9 +24,23 @@ func _physics_process(delta: float) -> void:
 		velocity.y = direction.y * walk_speed
 
 	move_and_slide()
-	process_animations()
+	_process_pushable_objects(move_speed)
+	_process_animations()
 
-func process_animations() -> void:
+func _process_pushable_objects(move_speed : float) -> void:
+	var object = raycast.get_collider()
+
+	if object and interact:
+		var push_force = move_speed * direction.x
+		var pull_force = push_force * 1.25
+
+		# Direction Vector
+		var object_direction_sign = sign(object.position.x - position.x)
+		var movement_direction_sign = sign(direction.x)
+		print(object_direction_sign == movement_direction_sign)
+		object.linear_velocity.x =  push_force if object_direction_sign == movement_direction_sign else pull_force
+
+func _process_animations() -> void:
 	if not is_on_floor():
 		if climbing:
 			play_animation(animations.climb)
@@ -34,7 +51,7 @@ func process_animations() -> void:
 		return
 
 	if abs(direction.x) > 0.0:
-		play_animation(animations.run if run else animations.walk)
+		play_animation(animations.run if _can_run() else animations.walk)
 		_reset_idle_timer()
 		return
 
@@ -44,6 +61,9 @@ func _reset_idle_timer():
 	if !idle_timer.paused:
 		idle_timer.start()
 		idle_timer.paused = true
+	
+func _can_run():
+	return run and not interact
 
 func _handle_idle_animation():
 	if current_animation() == animations.idle_2:
