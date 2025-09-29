@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://vt7ra7u7m6e0" path="res://assets/bonnie/bonnie_run.png" id="4_332ik"]
 [ext_resource type="Texture2D" uid="uid://b2yi1u1ol08dg" path="res://assets/bonnie/bonnie_walk.png" id="5_w2lwa"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
+atlas = ExtResource("3_km8py")
+region = Rect2(336, 0, 48, 72)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
 atlas = ExtResource("3_km8py")
 region = Rect2(528, 0, 48, 72)
@@ -21,10 +25,6 @@ region = Rect2(432, 0, 48, 72)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivps1"]
 atlas = ExtResource("3_km8py")
 region = Rect2(384, 0, 48, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvl01"]
-atlas = ExtResource("3_km8py")
-region = Rect2(336, 0, 48, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ihef"]
 atlas = ExtResource("2_ojkqc")
@@ -150,6 +150,14 @@ region = Rect2(336, 0, 48, 72)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nvl01")
+}],
+"loop": false,
+"name": &"climb",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_606se")
 }, {
 "duration": 1.0,
@@ -166,14 +174,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nvl01")
-}],
-"loop": false,
-"name": &"hang",
 "speed": 10.0
 }, {
 "frames": [{

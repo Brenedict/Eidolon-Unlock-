@@ -10,6 +10,8 @@ radius = 6.0
 height = 32.0
 
 [node name="Bonnie" type="CharacterBody2D" node_paths=PackedStringArray("idle_timer", "animated_sprite")]
+collision_layer = 128
+collision_mask = 3
 script = ExtResource("1_arwqe")
 idle_timer = NodePath("IdleTimer")
 animated_sprite = NodePath("Facing/AnimatedSprite2D")
@@ -25,7 +27,7 @@ texture_filter = 1
 position = Vector2(0, -2)
 scale = Vector2(0.5104166, 0.5104166)
 sprite_frames = ExtResource("4_2aw2h")
-animation = &"fall"
+animation = &"climb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

@@ -9,8 +9,9 @@
 
 [node name="Lv1" parent="." instance=ExtResource("6_ryrav")]
 
-[node name="Bonnie" parent="." instance=ExtResource("2_e2o6t")]
+[node name="Bonnie" parent="." node_paths=PackedStringArray("level_scene") instance=ExtResource("2_e2o6t")]
 position = Vector2(-682, -146)
+level_scene = NodePath("../Lv1")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
 remote_path = NodePath("../../Camera2D")

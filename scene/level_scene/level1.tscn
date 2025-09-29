@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=62 format=3 uid="uid://rwjc6vbbj4ia"]
 
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
+[ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_pdet0"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
+[ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
 size = Vector2(181, 252)
@@ -14,7 +17,7 @@ size = Vector2(181, 252)
 size = Vector2(156, 234)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v38iq"]
-size = Vector2(129, 157)
+size = Vector2(134, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwv3a"]
 size = Vector2(239, 180)
@@ -115,11 +118,11 @@ a = Vector2(36, 2)
 b = Vector2(-26, 20)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dopym"]
-a = Vector2(-16, 2)
-b = Vector2(-52, 2)
+a = Vector2(-15, 1)
+b = Vector2(-49, 2)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rjtee"]
-a = Vector2(24, 4)
+a = Vector2(21, 4)
 b = Vector2(-16, 30)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_beq0j"]
@@ -155,6 +158,24 @@ size = Vector2(22, 22.847656)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5le63"]
 size = Vector2(230.20313, 161.78125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1rmk"]
+size = Vector2(6.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdet0"]
+size = Vector2(7, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw1ra"]
+size = Vector2(7, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k30x"]
+size = Vector2(6.5, 72.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkafg"]
+size = Vector2(8, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l5cw"]
+size = Vector2(8, 75)
 
 [node name="Lv1" type="Node2D"]
 
@@ -218,7 +239,7 @@ position = Vector2(-398, 11)
 shape = SubResource("RectangleShape2D_ootpb")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="part1_collision"]
-position = Vector2(-256.5, 44.5)
+position = Vector2(-254, 44.5)
 shape = SubResource("RectangleShape2D_v38iq")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="part1_collision"]
@@ -452,3 +473,60 @@ shape = SubResource("RectangleShape2D_5le63")
 [node name="CollisionShape2D30" type="CollisionShape2D" parent="part2_collision"]
 position = Vector2(79.203125, 158.21875)
 shape = SubResource("RectangleShape2D_5le63")
+
+[node name="Ladders" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(237.75, -44)
+shape = SubResource("RectangleShape2D_p1rmk")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(355.5, -33.5)
+shape = SubResource("RectangleShape2D_pdet0")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(570.5, -19.5)
+shape = SubResource("RectangleShape2D_jw1ra")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(1250, -60.25)
+shape = SubResource("RectangleShape2D_jw1ra")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(1687.75, -76.375)
+shape = SubResource("RectangleShape2D_1k30x")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(2600, 61)
+shape = SubResource("RectangleShape2D_pkafg")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ladders"]
+position = Vector2(3078, 45.5)
+shape = SubResource("RectangleShape2D_2l5cw")
+debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
+
+[node name="Bonnie" parent="." instance=ExtResource("7_pdet0")]
+position = Vector2(-682, -146)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="PlayerInput" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("8_jw1ra")
+player = NodePath("../Bonnie")
+actions = ExtResource("9_1k30x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-682, -146)
+zoom = Vector2(3, 3)
+
+[connection signal="body_entered" from="Ladders" to="Bonnie" method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="Ladders" to="Bonnie" method="_on_ladders_body_exited"]
