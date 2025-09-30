@@ -1,8 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://c8qfwcnmv30f4"]
+[gd_scene load_steps=56 format=3 uid="uid://ca4piba87hldo"]
 
 [ext_resource type="Texture2D" uid="uid://3y5ath6wlb35" path="res://assets/platforms/level2/lv2_p1_city.png" id="1_caiio"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="2_fmdep"]
-[ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="4_me6ov"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="5_t4j2k"]
 [ext_resource type="Texture2D" uid="uid://c6rl6r6wjswa3" path="res://assets/background/street/6.png" id="6_70tv6"]
@@ -493,8 +493,9 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_u6px3")
 centered = false
 
-[node name="Bonnie2" parent="." instance=ExtResource("2_fmdep")]
+[node name="Bonnie2" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_fmdep")]
 position = Vector2(-241, -21)
+camera = NodePath("../Camera2D2")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie2"]
 remote_path = NodePath("../../Camera2D2")

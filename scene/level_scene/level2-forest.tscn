@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bhrbhmyytx8en"]
+[gd_scene load_steps=60 format=3 uid="uid://b2m3qdo7dclp0"]
 
 [ext_resource type="Texture2D" uid="uid://lhpykr1wvm5h" path="res://assets/background/forest/12.png" id="1_7r35c"]
 [ext_resource type="Texture2D" uid="uid://5rdb5bjtubg8" path="res://assets/background/forest/10.png" id="2_6o77w"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ntjcyqlptin" path="res://assets/background/forest/6.png" id="5_iskva"]
 [ext_resource type="Texture2D" uid="uid://ev2p01y8nf7e" path="res://assets/background/forest/7.png" id="6_rmp2w"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_84jy5"]
-[ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="8_wg7xe"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_wg7xe"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_t5drr"]
 [ext_resource type="Texture2D" uid="uid://052817py2x4r" path="res://assets/platforms/level2/lv2_p1_forest.png" id="11_maskb"]
 
@@ -288,8 +288,9 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_rmp2w")
 centered = false
 
-[node name="Bonnie" parent="." instance=ExtResource("7_84jy5")]
+[node name="Bonnie" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("7_84jy5")]
 position = Vector2(-241, -21)
+camera = NodePath("../Camera2D")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
 remote_path = NodePath("../../Camera2D")
