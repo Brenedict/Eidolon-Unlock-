@@ -1,8 +1,8 @@
 [gd_scene load_steps=83 format=3 uid="uid://rwjc6vbbj4ia"]
 
-[ext_resource type="Script" uid="uid://bibq5lhnftp18" path="res://scripts/level_scene.gd" id="1_1k30x"]
-[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
-[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
+[ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_1k30x"]
+[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/level1/lv1_p1.png" id="1_jwv3a"]
+[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/level1/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3y5ath6wlb35"
-path="res://.godot/imported/lv2_p1_city.png-fef31cad931a9aa03544bb004abe55e1.ctex"
+uid="uid://cjs1epnqus5w5"
+path="res://.godot/imported/lvl2_p1_city.png-6a4843869f3dd4df06c310598d8bd91f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/platforms/level2/lv2_p1_city.png"
-dest_files=["res://.godot/imported/lv2_p1_city.png-fef31cad931a9aa03544bb004abe55e1.ctex"]
+source_file="res://assets/platforms/level2/lvl2_p1_city.png"
+dest_files=["res://.godot/imported/lvl2_p1_city.png-6a4843869f3dd4df06c310598d8bd91f.ctex"]
 
 [params]
 
