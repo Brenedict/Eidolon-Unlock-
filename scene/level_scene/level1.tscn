@@ -753,7 +753,6 @@ position = Vector2(-684, -144)
 position = Vector2(2915.9998, -70.00003)
 spawn_point = NodePath("../SpawnPoint")
 camera = NodePath("../Camera2D")
-spawn_at_start = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie"]
 remote_path = NodePath("../../Camera2D")

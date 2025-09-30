@@ -1,3 +1,4 @@
+class_name LevelScene
 extends Node2D
 
 @export var player : Player
@@ -40,5 +41,9 @@ func _on_finish_line_body_entered(body: Node2D) -> void:
 
 	GameState.player_position = Vector2(0, 0)
 	GameState.changed_scene = false
-	get_tree().change_scene_to_file(next_level_scene)
 
+	var gamestate_children = GameState.get_children()
+	for child in gamestate_children:
+		child.queue_free()
+	
+	get_tree().change_scene_to_file(next_level_scene)

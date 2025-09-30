@@ -27,6 +27,7 @@ func _ready():
 	_get_remote_transform().remote_path = camera.get_path()
 	animated_sprite.play(animations.idle_2)
 
+
 func _get_remote_transform() -> RemoteTransform2D:
 	for child in get_children():
 		if child is RemoteTransform2D:
@@ -86,7 +87,10 @@ func _advance_on_zipline(parent: PathFollow2D, delta: float) -> bool:
 
 func _detach_from_zipline() -> void:
 	zipline = false
-	reparent(get_tree().root.get_child(0))
+	for child in get_tree().root.get_children():
+		if child is LevelScene:
+			reparent(child)
+
 	_get_remote_transform().remote_path = camera.get_path()
 	global_rotation = 0
 	global_position.x += 20.0
