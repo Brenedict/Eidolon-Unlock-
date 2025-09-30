@@ -1,6 +1,7 @@
 class_name Player
 extends PlatformerCharacter2D
 
+@export var spawn_point : Marker2D
 @export var idle_timer : Timer
 @export var raycast : RayCast2D
 @export var camera : Camera2D
@@ -8,12 +9,17 @@ extends PlatformerCharacter2D
 @export_range(0, 500, 0.2, "or_greater") var run_speed : float = 200.0
 @export_range(0, 500, 0.2, "or_greater") var jump_force : float = 300.0
 
+@export var spawn_at_start : bool = true
+
 var run : bool = false
 var climbing : bool = false
 var interact : bool = false
 var zipline : bool = false
 
 func _ready():
+	if spawn_point and spawn_at_start:
+		global_position = spawn_point.global_position
+
 	_get_remote_transform().remote_path = camera.get_path()
 	animated_sprite.play(animations.idle_2)
 

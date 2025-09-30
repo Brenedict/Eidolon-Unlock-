@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var player : Player
+@export var transition_screen : TransitionScreen
+@export var next_level_scene : PackedScene
 @export var zipline : Path2D
 
 func _on_ladders_body_entered(_body: Node2D) -> void:
@@ -22,3 +25,13 @@ func _on_zipline_area_body_entered(_body: Node2D) -> void:
 	_body.global_position = point.global_position + Vector2(0, 20.0)
 	_body.reparent(point)
 	_body.zipline = true
+
+
+func _on_finish_line_body_entered(body: Node2D) -> void:
+	print("Level Finished")
+
+	body.set_physics_process(false)
+	transition_screen.transition()
+	await transition_screen.finished
+	get_tree().change_scene_to_packed(next_level_scene)
+

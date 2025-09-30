@@ -12,6 +12,3 @@ func _on_body_entered(_body: Node2D) -> void:
 	await transition_screen.finished
 	player.global_position = spawn_point.global_position
 	_body.set_physics_process(true)
-
-
-

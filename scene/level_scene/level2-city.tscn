@@ -1,6 +1,7 @@
-[gd_scene load_steps=56 format=3 uid="uid://ca4piba87hldo"]
+[gd_scene load_steps=60 format=3 uid="uid://ca4piba87hldo"]
 
 [ext_resource type="Texture2D" uid="uid://3y5ath6wlb35" path="res://assets/platforms/level2/lv2_p1_city.png" id="1_caiio"]
+[ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_me6ov"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="2_fmdep"]
 [ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="3_fol5c"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="4_me6ov"]
@@ -8,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c6rl6r6wjswa3" path="res://assets/background/street/6.png" id="6_70tv6"]
 [ext_resource type="Texture2D" uid="uid://bpfy3q5h2elcc" path="res://assets/background/street/7.png" id="7_rj6jh"]
 [ext_resource type="Texture2D" uid="uid://bqr7jt8f7jenx" path="res://assets/background/street/8.png" id="8_u6px3"]
+[ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="10_t4j2k"]
+[ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="11_70tv6"]
+[ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="12_t4j2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubbsg"]
 size = Vector2(1017.5, 30)
@@ -180,7 +184,10 @@ size = Vector2(19.5, 22.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f083t"]
 size = Vector2(28, 32)
 
-[node name="Lv2-City" type="Node2D"]
+[node name="Lv2-City" type="Node2D" node_paths=PackedStringArray("player", "transition_screen")]
+script = ExtResource("1_me6ov")
+player = NodePath("Bonnie2")
+transition_screen = NodePath("TransitionScreen")
 
 [node name="lvl2_p1_city" type="Sprite2D" parent="."]
 position = Vector2(1288.9998, -103.99997)
@@ -493,8 +500,9 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_u6px3")
 centered = false
 
-[node name="Bonnie2" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_fmdep")]
+[node name="Bonnie2" parent="." node_paths=PackedStringArray("spawn_point", "camera") instance=ExtResource("2_fmdep")]
 position = Vector2(-241, -21)
+spawn_point = NodePath("../SpawnPoint")
 camera = NodePath("../Camera2D2")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bonnie2"]
@@ -508,3 +516,16 @@ actions = ExtResource("4_me6ov")
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(-241, -21)
 zoom = Vector2(3, 3)
+
+[node name="TransitionScreen" parent="." instance=ExtResource("10_t4j2k")]
+
+[node name="Killzone" parent="." node_paths=PackedStringArray("transition_screen", "player", "spawn_point") instance=ExtResource("11_70tv6")]
+position = Vector2(-230, 56)
+transition_screen = NodePath("../TransitionScreen")
+player = NodePath("../Bonnie2")
+spawn_point = NodePath("../SpawnPoint")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-240, -22)
+
+[node name="BgSound" parent="." instance=ExtResource("12_t4j2k")]

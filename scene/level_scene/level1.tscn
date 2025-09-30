@@ -1,9 +1,11 @@
-[gd_scene load_steps=85 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=88 format=3 uid="uid://rwjc6vbbj4ia"]
 
 [ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_1k30x"]
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/level1/lv1_p1.png" id="1_jwv3a"]
+[ext_resource type="PackedScene" uid="uid://ca4piba87hldo" path="res://scene/level_scene/level2-city.tscn" id="2_0frn7"]
 [ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/level1/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
+[ext_resource type="PackedScene" uid="uid://bep6r7uxh75gg" path="res://scene/finish_line.tscn" id="3_ldfgt"]
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
@@ -12,8 +14,9 @@
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
 [ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
 [ext_resource type="PackedScene" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]
-[ext_resource type="PackedScene" path="res://scene/bg_sound.tscn" id="13_541h4"]
+[ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="13_541h4"]
 [ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="14_541h4"]
+[ext_resource type="Texture2D" uid="uid://j2owmbg8ojfr" path="res://assets/platforms/ladder.png" id="14_ndvtf"]
 [ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
@@ -166,7 +169,7 @@ size = Vector2(22, 22.847656)
 size = Vector2(230.20313, 161.78125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1rmk"]
-size = Vector2(6.5, 27)
+size = Vector2(6.5, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pdet0"]
 size = Vector2(9, 71)
@@ -237,9 +240,15 @@ b = Vector2(128, 13)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0frn7"]
 b = Vector2(78, 8)
 
-[node name="Lv1" type="Node2D" node_paths=PackedStringArray("zipline")]
+[node name="Lv1" type="Node2D" node_paths=PackedStringArray("player", "transition_screen", "zipline")]
 script = ExtResource("1_1k30x")
+player = NodePath("Zipline/ZiplinePoint/Bonnie")
+transition_screen = NodePath("TransitionScreen")
+next_level_scene = ExtResource("2_0frn7")
 zipline = NodePath("Zipline")
+
+[node name="FinishLine" parent="." instance=ExtResource("3_ldfgt")]
+position = Vector2(3952, 26)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -248,7 +257,7 @@ position = Vector2(-1635, -734)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backdrop"]
-position = Vector2(-51, 6)
+position = Vector2(-51, 4)
 texture = ExtResource("3_1ue5w")
 centered = false
 
@@ -281,6 +290,12 @@ motion_mirroring = Vector2(700, 0)
 scale = Vector2(0.29202127, 0.3101273)
 texture = ExtResource("6_iypo8")
 centered = false
+
+[node name="Ladder" type="Sprite2D" parent="."]
+position = Vector2(237.771, 4.1208496)
+rotation = -3.140511
+scale = Vector2(0.45394063, -0.53633136)
+texture = ExtResource("14_ndvtf")
 
 [node name="lvl1_p1" type="Sprite2D" parent="."]
 position = Vector2(844, 19)
@@ -544,7 +559,7 @@ gravity_direction = Vector2(0, 0)
 gravity = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ladders"]
-position = Vector2(237.75, -43.5)
+position = Vector2(237.75, -7)
 shape = SubResource("RectangleShape2D_p1rmk")
 debug_color = Color(0.10840901, 0.6259402, 0.48372048, 0.41960785)
 
@@ -631,7 +646,7 @@ player = NodePath("../Zipline/ZiplinePoint/Bonnie")
 actions = ExtResource("9_1k30x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-684, -143.99988)
+position = Vector2(2915.9998, -70.00003)
 zoom = Vector2(3, 3)
 
 [node name="PushableBox" parent="." instance=ExtResource("10_jw1ra")]
@@ -657,10 +672,12 @@ position = Vector2(3062, -59)
 rotation = 0.3708913
 loop = false
 
-[node name="Bonnie" parent="Zipline/ZiplinePoint" node_paths=PackedStringArray("camera") instance=ExtResource("7_pdet0")]
-position = Vector2(-3522.0974, 1278.5034)
+[node name="Bonnie" parent="Zipline/ZiplinePoint" node_paths=PackedStringArray("spawn_point", "camera") instance=ExtResource("7_pdet0")]
+position = Vector2(-140.05981, 42.66516)
 rotation = -0.3708913
+spawn_point = NodePath("../../../SpawnPoint")
 camera = NodePath("../../../Camera2D")
+spawn_at_start = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Zipline/ZiplinePoint/Bonnie"]
 remote_path = NodePath("../../../../Camera2D")
@@ -731,6 +748,7 @@ position = Vector2(-684, -144)
 
 [node name="TransitionScreen" parent="." instance=ExtResource("15_e3d3u")]
 
+[connection signal="body_entered" from="FinishLine" to="." method="_on_finish_line_body_entered"]
 [connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]
 [connection signal="body_exited" from="Ladders" to="." method="_on_ladders_body_exited"]
 [connection signal="body_entered" from="Zipline/ZiplineArea" to="." method="_on_zipline_area_body_entered"]
