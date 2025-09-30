@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_pdet0"]
-[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
+[ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
 [ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
 [ext_resource type="PackedScene" uid="uid://d24irk8ukgfe8" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]

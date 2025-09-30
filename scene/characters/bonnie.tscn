@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ciurmjgcl7fvc"]
 
-[ext_resource type="Script" uid="uid://wikb8xnd1kji" path="res://scripts/characters/player/player.gd" id="1_arwqe"]
+[ext_resource type="Script" uid="uid://bvk64ad8uw4sw" path="res://scripts/characters/player/player.gd" id="1_arwqe"]
 [ext_resource type="Resource" uid="uid://douyr1cdhmc7d" path="res://scene/characters/player_animations.tres" id="2_5ke4s"]
-[ext_resource type="Script" uid="uid://dpvw8o4i8ge4v" path="res://scripts/characters/facing.gd" id="3_5ke4s"]
+[ext_resource type="Script" uid="uid://d0r4ynkskvuai" path="res://scripts/characters/facing.gd" id="3_5ke4s"]
 [ext_resource type="SpriteFrames" uid="uid://bpvy7q3gh05pf" path="res://scene/characters/bonnie_frames.tres" id="4_2aw2h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp2uo"]

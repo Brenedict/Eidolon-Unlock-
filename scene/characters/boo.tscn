@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://3aodr1c60qgx"]
+
+[ext_resource type="Script" uid="uid://bvk64ad8uw4sw" path="res://scripts/characters/player/player.gd" id="1_iw3ai"]
+[ext_resource type="Resource" uid="uid://douyr1cdhmc7d" path="res://scene/characters/player_animations.tres" id="2_skrjp"]
+[ext_resource type="Script" uid="uid://d0r4ynkskvuai" path="res://scripts/characters/facing.gd" id="3_rp0to"]
+[ext_resource type="SpriteFrames" uid="uid://bpvy7q3gh05pf" path="res://scene/characters/bonnie_frames.tres" id="4_xvwgg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fp2uo"]
+radius = 6.0
+height = 32.0
+
+[node name="Bonnie" type="CharacterBody2D" node_paths=PackedStringArray("idle_timer", "animated_sprite")]
+collision_layer = 128
+collision_mask = 3
+script = ExtResource("1_iw3ai")
+idle_timer = NodePath("IdleTimer")
+animated_sprite = NodePath("Facing/AnimatedSprite2D")
+animations = ExtResource("2_skrjp")
+
+[node name="Facing" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+scale = Vector2(-1, 1)
+script = ExtResource("3_rp0to")
+character = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Facing"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(0.5104166, 0.5104166)
+sprite_frames = ExtResource("4_xvwgg")
+animation = &"climb"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_fp2uo")
+metadata/_edit_group_ = true
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="Facing/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
