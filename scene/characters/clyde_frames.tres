@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CharacterAnimations2D" load_steps=2 format=3 uid="uid://cbt7fbwhmx6wt"]
+
+[ext_resource type="Script" uid="uid://cpoh8svqwqtrx" path="res://scripts/characters/character_animations_2d.gd" id="1_weh45"]
+
+[resource]
+script = ExtResource("1_weh45")
+metadata/_custom_type_script = "uid://cpoh8svqwqtrx"

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmhvh36bmb8pp"]
+
+[ext_resource type="Texture2D" uid="uid://c1lj2grk82w3g" path="res://assets/chat_bubbles/main_chat_bubble.png" id="1_tr5cx"]
+[ext_resource type="LabelSettings" uid="uid://bqyf0juy3c71b" path="res://scene/main_chat_bubble.tres" id="2_iv8f6"]
+
+[node name="MainChatBubble" type="Node2D"]
+
+[node name="MainChatBubble" type="Sprite2D" parent="."]
+position = Vector2(0, 1.9073486e-06)
+scale = Vector2(0.22429895, 0.22429906)
+texture = ExtResource("1_tr5cx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+text = "what's up cuh"
+label_settings = ExtResource("2_iv8f6")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
