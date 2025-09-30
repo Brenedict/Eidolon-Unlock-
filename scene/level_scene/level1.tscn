@@ -1,18 +1,20 @@
-[gd_scene load_steps=83 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=85 format=3 uid="uid://rwjc6vbbj4ia"]
 
-[ext_resource type="Script" uid="uid://bibq5lhnftp18" path="res://scripts/level_scene.gd" id="1_1k30x"]
-[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/lv1_p1.png" id="1_jwv3a"]
-[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/lv1_p2.png" id="2_dopym"]
+[ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_1k30x"]
+[ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/level1/lv1_p1.png" id="1_jwv3a"]
+[ext_resource type="Texture2D" uid="uid://dnd4f82nraqwd" path="res://assets/platforms/level1/lv1_p2.png" id="2_dopym"]
 [ext_resource type="Texture2D" uid="uid://dw1a42vsschyc" path="res://assets/background/roof/eidlon.png" id="3_1ue5w"]
 [ext_resource type="Texture2D" uid="uid://j7m76gwam62w" path="res://assets/background/roof/2.png" id="4_s676v"]
 [ext_resource type="Texture2D" uid="uid://bj0tebnwp5oe8" path="res://assets/background/roof/3.png" id="5_p1rmk"]
 [ext_resource type="Texture2D" uid="uid://7n5ncmy3nxn" path="res://assets/background/roof/4.png" id="6_iypo8"]
 [ext_resource type="PackedScene" uid="uid://ciurmjgcl7fvc" path="res://scene/characters/bonnie.tscn" id="7_pdet0"]
-[ext_resource type="Script" uid="uid://cpsykfmg3q4o0" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
+[ext_resource type="Script" uid="uid://bk8relen5afv3" path="res://scripts/characters/player/player_input.gd" id="8_jw1ra"]
 [ext_resource type="Resource" uid="uid://d2c63rwnti8m7" path="res://scene/characters/player_input_actions.tres" id="9_1k30x"]
 [ext_resource type="PackedScene" uid="uid://cckds7drxy0dw" path="res://scene/pushable_box.tscn" id="10_jw1ra"]
-[ext_resource type="PackedScene" uid="uid://d24irk8ukgfe8" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]
-[ext_resource type="PackedScene" uid="uid://b2tuus0jm4hbv" path="res://scene/bg_sound.tscn" id="13_541h4"]
+[ext_resource type="PackedScene" path="res://scene/characters/clyde.tscn" id="13_2l5cw"]
+[ext_resource type="PackedScene" path="res://scene/bg_sound.tscn" id="13_541h4"]
+[ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="14_541h4"]
+[ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dopym"]
 size = Vector2(181, 252)
@@ -717,6 +719,17 @@ debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
 position = Vector2(-640, -138)
 
 [node name="BgSound" parent="." instance=ExtResource("13_541h4")]
+
+[node name="Killzone" parent="." node_paths=PackedStringArray("transition_screen", "player", "spawn_point") instance=ExtResource("14_541h4")]
+position = Vector2(-490, 260)
+transition_screen = NodePath("../TransitionScreen")
+player = NodePath("../Zipline/ZiplinePoint/Bonnie")
+spawn_point = NodePath("../SpawnPoint")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-684, -144)
+
+[node name="TransitionScreen" parent="." instance=ExtResource("15_e3d3u")]
 
 [connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]
 [connection signal="body_exited" from="Ladders" to="." method="_on_ladders_body_exited"]
