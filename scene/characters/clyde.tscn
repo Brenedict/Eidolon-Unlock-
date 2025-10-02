@@ -90,6 +90,7 @@ animations = ExtResource("2_rkott")
 shape = SubResource("CapsuleShape2D_tge2x")
 
 [node name="Facing" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+scale = Vector2(-1, 1)
 script = ExtResource("3_ktw24")
 character = NodePath("..")
 

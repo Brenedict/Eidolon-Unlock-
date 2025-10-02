@@ -9,7 +9,7 @@ signal finished
 func _ready():
 	color_rect.visible = false
 	animation_player.animation_finished.connect(_on_animation_finished)
-	_intro_transition()
+	# _intro_transition()
 
 func _on_animation_finished(anim_name : StringName):
 	if anim_name == "fade_to_black" or anim_name == "intro_fade":

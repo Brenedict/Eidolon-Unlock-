@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_lsijx")
 idle_2 = &"idle_1"
-fall = &"idle_1"
-climb = &"idle_1"
+fall = &"jump"
+climb = &"jump"
 interact = &"idle_1"
 metadata/_custom_type_script = "uid://cpoh8svqwqtrx"

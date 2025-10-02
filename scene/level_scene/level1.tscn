@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://rwjc6vbbj4ia"]
+[gd_scene load_steps=90 format=3 uid="uid://rwjc6vbbj4ia"]
 
 [ext_resource type="Script" uid="uid://dovly1rei0j8n" path="res://scripts/level_scene.gd" id="1_1k30x"]
 [ext_resource type="Texture2D" uid="uid://dm82akmekw4up" path="res://assets/platforms/level1/lv1_p1.png" id="1_jwv3a"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ckfc7r8o6smuy" path="res://scene/bg_sound.tscn" id="13_541h4"]
 [ext_resource type="PackedScene" uid="uid://djy8wyqpxxswa" path="res://scene/killzone.tscn" id="14_541h4"]
 [ext_resource type="Texture2D" uid="uid://j2owmbg8ojfr" path="res://assets/platforms/ladder.png" id="14_ndvtf"]
+[ext_resource type="FontFile" uid="uid://coctmiuagy65n" path="res://assets/fonts/pixel_operator/PixelOperator.ttf" id="15_d811u"]
 [ext_resource type="PackedScene" uid="uid://bqomhgu5tjoqo" path="res://scene/transition_screen.tscn" id="15_e3d3u"]
 [ext_resource type="PackedScene" uid="uid://2q41fgk1fm2h" path="res://scene/small_chat_bubble.tscn" id="15_kk0l2"]
 [ext_resource type="AudioStream" uid="uid://dk3ex1n2tv2cf" path="res://assets/sounds/oknotokbonnie.wav" id="17_d811u"]
@@ -724,7 +725,7 @@ shape = SubResource("SegmentShape2D_0frn7")
 debug_color = Color(0.59176284, 0.5467892, 0.060782306, 0.41960785)
 
 [node name="Clyde" parent="." instance=ExtResource("13_2l5cw")]
-position = Vector2(-560, -142)
+position = Vector2(-646, -140)
 
 [node name="SmallChatBubble" parent="Clyde" instance=ExtResource("15_kk0l2")]
 position = Vector2(0, -14)
@@ -734,6 +735,13 @@ offset_left = -8.0
 offset_top = -12.0
 offset_right = 8.0
 offset_bottom = 11.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_d811u")
+theme_override_font_sizes/font_size = 3
+text = " boo.."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="BgSound" parent="." instance=ExtResource("13_541h4")]
 stream = ExtResource("17_d811u")
