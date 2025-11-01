@@ -1,6 +1,6 @@
 ## EIDOLON — a narrative puzzle platformer
 
-![EIDOLON-Cover](./assets/game-figures/EIDOLON-Cover-PPT.png)
+![EIDOLON-Cover](./assets/game-figures/EIDOLON-Cover-PPT.PNG)
 
 #### Team Members:
 👨‍🎨 Project Lead, Graphics – Ed Marcel Godinez Lasco
